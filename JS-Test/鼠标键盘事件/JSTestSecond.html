@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS事件练习</title>
+	<style type="text/css">
+		.btn {
+			background-color: gray;
+			width: 100px;
+			height: 100px;
+			margin: 20px;
+
+		}
+		#content {
+
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<!-- 在button中直接添加事件，一般不使用在HTNL内增加事件 ,容易混淆的-->
+	<!-- <input type="button"  value="弹出" onclick="alert('直接添加的函数')"> -->
+	<!-- HTML调用外部函数 -->
+	<!-- <input id = "bbb" type="button"  value="弹出"  onclick="myFunction()">
+	 -->
+	<input id = "bbb" type="button"  value="弹出" >
+	<!-- 鼠标的事件：1.鼠标滑过触发onmouseover 2. 鼠标离开时触发onmouseout-->
+	<div class="btn" onmouseover ="onmousemoveFn(this,'red')" onmouseout="onmouseoutFn(this,'blue')"> 开始</div>
+	<div class="btn" onmousedown="onmousedownFn(this,'green')" onmouseup="onmouseupFn(this,'yellow')">结束</div>
+
+	<div id="content" >请输入手机号码</div>
+	<!--  placeholder ="请输入手机号"  -->
+	<textarea id="txt"></textarea>
+
+	<!-- 键盘事件：还能输入多少字 -->
+	<div>
+		<p >你还可以输入<span><em class="count">30</em></span>字</p>
+		<div class="input">
+			<textarea cols="70" rows="4"   id="show"></textarea>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+
+		// function myFunction() {
+		// 	alert("我是外部函数");
+		// }
+
+		var btn = document.getElementById("bbb");
+		//给btn的onclict事件附加匿名函数
+		btn.onclick =  function () {
+			//alert("我是按钮绑定的匿名函数");
+			//获取button属性
+			var value = btn.getAttribute("value");
+			if (value == "弹出") {
+				//设置--属性
+				btn.setAttribute("value","收缩");
+			}else{
+			btn.setAttribute("value","弹出");	
+			}
+		}
+		// 鼠标滑动
+		function onmousemoveFn(btn,bgColor) {
+			console.log(btn);
+			//鼠标滑动设置样式
+			btn.style.backgroundColor= bgColor;
+
+		}
+		//鼠标离开
+		function onmouseoutFn(btn,bgColor) {
+			
+			btn.style.backgroundColor =  bgColor;
+		}
+		// 鼠标按下
+		function onmousedownFn(btn,bgColor) {
+
+			btn.style.backgroundColor= bgColor;
+
+		}
+		//鼠标抬起
+		function onmouseupFn(btn,bgColor) {
+			
+			btn.style.backgroundColor =  bgColor;
+		}
+
+                // =========================================================
+
+		// 文本框获取焦点，失去焦点事件
+		var  txt = document.getElementById("txt"),
+		        content = document.getElementById("content");
+		        //输入框获取焦点 
+		        txt.onfocus = function () {
+		        	//这里注意：display是样式style，不是属性
+		        	content.style.display = 'block';
+		        }
+		        //给id为txt的输入框 附加失去焦点的事件
+		        txt.onblur = function() {
+		        	content.style.display = 'none';
+		        	//获取用户输入的内容
+		        	var phone = txt.value;    // 等同于 this.value
+		        	// if (phone.length ==11 && !isNaN(phone)) {}
+		        	if (isNaN(phone)) {
+		        		//alert("请输入纯数字");
+		        	}else{
+		        		if (phone.length == 11) {
+
+		        			//alert("保存成功");
+		        		}else{
+		        			//alert("请输入正确的手机号");
+		        		}
+		        	}
+		        }
+
+		        //===========键盘事件,可以直接使用document进行监听========
+
+		        document.onkeydown = function (event){
+		        	//监控按下那个键
+		        	console.log(event.key);
+		        	//对应键的编码
+		        	console.log(event.keyCode);
+		        }
+
+		        var  show = document.getElementById("show"),  //获取对应输入框ID
+		        	 totle = 30,
+		        	 em = document.getElementsByClassName('count'); //这里获取的Class为多个，要以数组的形式去取 em[0]
+		        	 
+		        	 //给键盘抬起的时候，绑定监听事件
+		        	document.onkeyup = function() {
+		                // 注意：这里只有  textarea  才 有value,才能获取长度
+		        	var  len2 = show.value.length;  //获取输入框输入字的长度
+
+		        	var num = totle - len2;
+		        	if (num >= 0) {
+
+		        		em[0].innerHTML = num;
+		        	} else{
+		        		em[0].innerHTML = 0;
+		        		show.setAttribute("readonly","readonly");		        		
+		        	}
+		        	
+
+		        	}
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

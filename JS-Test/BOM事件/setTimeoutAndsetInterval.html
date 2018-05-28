@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>setTimeout&setInterval</title>
+</head>
+<body>
+	<div>
+		JS是单线程语言，就是所执行的代码必须按照顺序 <br>
+		setTimeout  超时调用：隔一定时间后调用  <br>
+		setInterval    间歇调用：每隔一段时间执行一次 <br>
+		二者都是window的方法，一般省去window <br>
+	</div>
+
+	<script type="text/javascript">
+		/*
+		 1：直接调用匿名函数
+		 2：调用外部函数
+		*/
+		// setTimeout(function(){
+		// 	alert("五秒后执行此函数");
+		// },5000)
+
+		/*
+		   外部调用注意，这里和 ele.onclick = myFunction;一样
+		   这里是引用，而不是调用，所以是myFunction
+
+		   后面不能加括号  myFunction(), 加括号会直接运行函数
+	                   会直接运行函数
+		*/
+		// var timeID = setTimeout(myFunction,3000)
+
+		//  function myFunction() {
+		// 	alert("外部函数调用");
+		// }
+
+		// var intvalID= setInterval(function(){
+		// 	console.log("2秒打印一次");
+		// },2000)
+
+		/*取消：
+			二者都会返回一个唯一ID，可以通过clearTimeout(ID),clearInterval(ID)
+			来进行取消
+		*/
+		// clearTimeout(timeID);
+		// clearInterval(intvalID);
+
+		/*持续打印：1~~10
+			1.通过setInterval实现
+			2.通过setTimeout实现
+
+		*/
+		var num =1,intID,timeID;
+		// intID = setInterval(function(){
+		// 	console.log(num);
+		// 	num++;
+		// 	if (num>10) {
+
+		// 		clearInterval(intID);
+		// 	}
+
+		// },1000)
+
+		timeID =  setTimeout(consoleNum,1000);
+
+		function consoleNum() {
+			console.log("time"+num);
+			num++;
+			if (num <= 10) {
+				//递归：在函数内部再次调用函数
+				setTimeout(consoleNum,1000);
+			}else{
+				clearTimeout(timeID);
+			}
+
+		}
+
+
+	</script>
+
+	
+</body>
+</html>

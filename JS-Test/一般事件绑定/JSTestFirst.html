@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS练习</title>
+	<!-- 引用外部JS -->
+	<script type="text/javascript" src="JSTestFirst.js"></script>
+	<script>
+		//页面加载完时，再执行后面函数
+		window.onload = function() {
+
+		//定义函数
+		// function firstFunction() {
+		// 	alert("函数被调用啦！");
+		// }
+		//在这里直接调用函数，就会有弹出框
+		//firstFunction();
+		var myDiv =  document.getElementById("father");
+		//设置样式
+		myDiv.style.background = 'red';
+
+		// console.log(myDiv);
+		// console.log(typeof(myDiv));//object
+		// console.log(myDiv.innerHTML);
+		// console.log(typeof(myDiv.innerHTML));//string
+
+		//用 点 . 语法获取元素自带属性，如id ， align
+		console.log(myDiv.className);//获取当前 dom 元素的  class
+		console.log(myDiv.align);//获取当前 dom 元素的 自带元素 align
+		//getAttribute用来获取自定义属性,也可以获取自带元素
+		console.log(myDiv.getAttribute("test")); 
+		myDiv.removeAttribute("align");//移除属性
+		myDiv.setAttribute("align","right");
+
+		}
+
+	</script>
+</head>
+<body>
+	<div id="father" class="father"  test = "yangyawei" align = "center">
+		<p>
+			我是div里面的p元素		
+		</p>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</div>
+
+</body>
+</html>

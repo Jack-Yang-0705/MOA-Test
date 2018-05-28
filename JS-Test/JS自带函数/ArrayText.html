@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Array和String练习</title>
+</head>
+<body>
+
+	<div style="line-height: 80px;color: blue">
+		Array练习
+	</div>
+
+	<script type="text/javascript">
+		/*
+			数组的几种定义方法：
+		*/
+		var ary1 = new Array(),
+		       ary2 = [1,2,3,4,2,5],
+		       ary3 = new Array("大","傻","妞"),
+		       ary4 = new Array(4); //4代表长度
+
+		ary1 = ["yang","ya","wei"];
+
+		ary4 = [2,8,9,15,6,3];
+
+		// console.log(ary1[0]);
+
+		// console.log(ary3[1]);
+
+		// console.log(ary4.length);
+
+		/*
+			数组长度方法的使用:
+			push():在数组后添加元素，返回的是长度
+			unshift():在数组前面添加元素，返回也是添加后的长度
+			pop():删除最后一个元素，返回是删除的元素
+			shift():删除第一个元素，返回是删除的元素
+		*/
+		// var len =  ary1.push("li","hai"); //返回增加后的长度
+		// console.log(len);
+		// ary3.unshift("傻","媳","妇");
+		// console.log(ary3);
+
+		// var del = ary2.pop();
+		// console.log(del); //删除5，返回的是5
+		// var del2 = ary2.shift();
+		// console.log(del2);//删除1，返回的是1
+		// console.log(ary2);
+
+		/*
+		   	数组之间以及数组和字符串之间的交互方法：
+		   	join('-'):通过括号里参数把数组元素连城字符串
+		   	reverse():数组倒叙
+		   	sort():数组排序，默认并不升序，而是按字母编码
+		   	concat:链接两个数组，返回数组
+		   	slice(a,b): 传入开始，和结束下标   ，前闭后开
+		*/
+		// var str = ary1.join('-');
+		// console.log(str);
+		// var ary5 = ary2.reverse();
+		// console.log(ary5);
+
+		//这里需要注意，排序后并不是返回新的数组，而是改变原来数组的顺序
+		// console.log(ary4);
+		// var ary6 = ary4.sort(function (a,b) {
+		// 	return a-b; //升序，实现原理冒泡排序
+		// });
+		//  console.log(ary6);
+
+		// var ary7 = ary4.sort(function (a,b) {
+		// 	return b-a;//降序
+		// });
+
+		// console.log(ary7);
+
+		// var ary8 = ary1.concat(ary3);
+		// console.log(ary8);  //返回两个数组的总和
+
+		// var ary9 = ary4.slice(1,4); //8,9,15
+		// console.log(ary9);
+
+		/*
+			面试题：尽可能多的方法copy一个数组
+			假设copy--ary2
+		*/
+
+
+		var aryCopy = new Array();
+		//1.通过for循环
+		// for (var i = 0; i < ary2.length; i++) {
+		// 	//aryCopy[i] = ary2[i];
+		// 	aryCopy.push(ary2[i]);
+		// }
+
+		//2.通过concat链接 ,用一个空数组链接一个数组
+		//aryCopy = aryCopy.concat(ary2);
+		//3.字符串截取 slice(),从0坐标到最后
+		aryCopy =  ary2.slice(0);
+		console.log(aryCopy);
+
+		/*
+			检测在数组中出现的位置“
+			indexOf（n1,n2）  第二个参数是从哪里开始查找
+			检测某一个元素在数组中出现的位置，有多个就返回第一个，没有返回-1
+		*/
+
+		// var index = ary2.indexOf(2);
+		// console.log(index);
+		// var lastIndex = ary2.lastIndexOf(2);
+		// console.log(lastIndex);
+		//封装方法实现indexOf的功能
+		function index(number) {
+
+			for (var i = 0; i < ary2.length; i++) {
+				if (number === ary2[i]) {
+
+					return i;
+				}
+			}
+		}
+
+		var i = index(2);
+		console.log("自己封装index------>" + i);
+
+
+	</script>
+
+</body>
+</html>

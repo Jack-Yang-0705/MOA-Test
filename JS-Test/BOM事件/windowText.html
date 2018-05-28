@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>BOM-Window对象练习</title>
+</head>
+<body>
+	<div>BOM对象包含</div>
+	<ul>
+		<li>window</li>
+		<li>location</li>
+		<li>screen</li>
+		<li>history</li>
+		<li>navigation</li>
+		<li>document</li>
+		<li>event</li>
+	</ul>
+	<div>window 定义的变量为全局变量</div>
+	<script type="text/javascript">
+		var name = "yawei";
+		function sayName() {
+			//alert 也是window的方法，也是全局方法
+			window.alert(name);
+			console.log(this); //window
+		}
+
+		window.age = 20;
+
+		window.sayAge = function() {
+
+			alert(age);
+			console.log(this); //window
+		}
+
+		sayAge();
+		sayName();
+		
+	          //确定返回true ，取消返回false
+	        // var  result = window.confirm("你确定要取消吗？");
+	        // console.log(result);
+
+	        /*  window.prompt()
+	             确定返回用户输入的内容，不输入返回默认  ，
+	             取消返回null
+	        */
+
+	        // var  content = window.prompt("请输入你的姓名","杨老板");
+	        // console.log(content);
+
+	          /*  window.open()
+	                 打开网页
+	        */
+
+	        //类似alert ，可省略window，直接使用open
+	        window.open("JSTestThree2.html","JSTestThree2","width=500,height=500");
+
+	</script>
+
+	
+</body>
+</html>

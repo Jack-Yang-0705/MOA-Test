@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Stringl练习</title>
+</head>
+<body>
+	<div style="line-height: 80px;color: blue">
+		String练习
+	</div>
+
+	<script type="text/javascript">
+	'use strict';
+	/*
+		charAt(index):某个位置是什么
+		charCodeAt(index):某个位置字符的编码
+		indexOf    &  lastIndexOf   ：参数可以是字符，也可以是字符串 ,没有返回-1
+	*/
+
+	var str = 'hellow world';
+	// var index =  str.charAt(5); //从 0 开始，返回w
+	// var indexCode = str.charCodeAt(5);
+	// console.log(index);
+	// console.log(indexCode);
+	// var loca1 = str.indexOf('w');
+	// var loca2 = str.indexOf('or');
+	// console.log(loca1);
+	// console.log(loca2);
+
+	/*
+		截取方法：
+		slice(start,end):start必须的，开始位置，end 结束位置，可选
+		substring(): 用法与slice 一直，参数有负数，自动转为0，并把较小的作为开始
+		substr(start,length):  起始位置，截取长度
+	*/
+
+	//var  st1 = str.slice(2,8);
+	//console.log(st1);
+
+	// var st2 = str.substring(5,-1); //(0,5)
+	// console.log(st2);
+
+	
+	/*
+		split(separator):切割字符串，返回数组
+		replace(regexp,replacement):替换
+		toUpperCase():转化为大写
+		toUpperCase():转化为小写
+	*/
+	// var str3 = 'wo-ai-ni-ya';
+	// var ary = str3.split('-');
+	// console.log(ary);
+
+	// var str4 = str3.replace('-','*'); //返回wo*ai-ni  ,只会替换第一个
+	// console.log(str4);
+
+	//案例：把 border-left-corlor    转化为：borderLeftCorlor
+
+	
+	function changeUp(str) {
+		var ary2 = str.split('-');
+		var str6 = ary2[0];
+		for (var i = 1; i < ary2.length; i++) {
+			
+			str6 += ary2[i].slice(0,1).toUpperCase() +ary2[i].slice(1);
+			
+		}
+		return str6;
+	}
+	var str5 = 'border-left-corlor';
+	console.log(changeUp(str5));
+	console.log(changeUp('yang-ya-wei-da-sha-niu'));
+
+
+	</script>
+
+</body>
+</html>

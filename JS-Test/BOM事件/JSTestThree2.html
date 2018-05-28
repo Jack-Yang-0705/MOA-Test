@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>页面1</title>
+</head>
+<body>
+
+	<div style="color: red; height: 50px;font-weight: bolder;font-size: 18px;">页面1</div>
+
+	<div style="height: 50px">从上个页面跳转到此页面后，通过点击按钮返回上一层</div>
+
+	<input type="button" name="btn" id="btn"  value="返回历史上一层">
+	<br>
+	<br>
+	<br>
+
+	<a href="index2.html">跳转到页面2</a>
+
+	<script type="text/javascript">
+
+		var btn = document.getElementById("btn");
+
+		btn.onclick = function(){
+
+			//等同于history.go(-1);
+			history.back();
+		}
+		
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>BOM事件练习</title>
+	<script type="text/javascript">
+		//通过var 和 window定义的都是全局的
+		var age = 28;
+		function showAge() {
+			 console.log(1 + this);  //直接调用函数的话，this就代表window
+			//alert(age);		
+		}
+		window.name = 'yangyawei';
+		window.showName = function(){
+			console.log(2 + this);//这里的this也代表window
+			//alert(this.name);
+		}
+		showAge();
+		showName();
+		//alert  和 confirm 都属于 window对象的方法
+		//window.alert(111);
+		//var con =  window.confirm("你确定要取消");
+		//console.log(con); //点确定返回true，点击取消返回false
+
+		//类似alert ，可省略window，直接使用open
+		//window.open('JSTestThree2.html','newwindow',"width=400,height=200,left=0,top=0scrollaers=yes");
+
+
+		/*
+		JS是单线程语言，就是所执行的代码必须按照顺序
+		   setTimeout  超时调用，间隔一定时间后调用 
+		  */
+
+		var time = function () {
+			alert("超时调用定义好的函数");
+		}
+		//注意：这里调用函数不能带括号，带括号是立即执行
+		//setTimeout(time,10000);
+  		
+  	  //每个超时调用都会返回有一个ID，通过这个ID，可以取消对应超时调用的代码块	
+  	           var id =setTimeout(function () {
+  			alert("超时调用,打开后5,秒之后调用");
+  		},5000)
+
+  	           console.log('id:' + id);
+  	           //取消 5 秒后的超时调用
+  	           clearTimeout(id);
+
+  	           /*
+		setInterval :间歇调用，每隔指定时间调用代码块
+		 */
+
+		var id2 =  setInterval(function () {
+		 	alert("setInterval重复调用");
+		 },5000);
+
+		console.log('id2:'+id2);
+		//取消重复调用
+		clearInterval(id2);
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

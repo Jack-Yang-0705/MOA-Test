@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>浏览器对象：location</title>
+	<style type="text/css">
+		.bom1 {
+			height: 800px;
+			background-color: #ccc;
+		}
+		.bom2 {
+			height: 500px;
+			background-color: #666;
+		}
+	</style>
+</head>
+<body>
+	<div class="bom1" id="top">功能：把URL截取成 不同的片段，使开发者通过不同的属性访问不同的片段</div>
+	<div class="bom2">
+	location即 是浏览器对象，同是又是window和document的属性<br>
+	即可以通过window.location  和  document.location 来调用
+	</div>
+	<input type="button" name="btn" value="按钮" id="btn">
+	
+	<script type="text/javascript">
+		/*常用属性：
+		  href: 获取当前完整的url  
+		  hash:返回url中的hash，就是 # 号后面的，可以使用 锚 链接
+		  host:返回服务器名称 和 端口号（如果有），没有就返回服务器名称
+		  hostname:返回不带端口号的服务器名称（不论有没有端口号，只返回服务器名称）
+		  pathname:返回url中的目录 或 文件名  （一般是服务器名称后面，问之前的路径部分  例如： https://www.baidu.com/smart? number=1  ,返回/smart ）  
+		  port:返回端口号，没有返回 ""
+		  protocol:协议  一般是http 或 https
+		  search：返回url   ？号后面的
+		  */
+		var hre = location.href;   //等同于  window.location.href
+		console.log(hre);
+
+		var btn = document.getElementById("btn");
+		btn.onclick =  function(){
+			 //这里使用锚链接，跳到id为top的div
+			location.hash = "#top"; 
+		}
+
+		/*	
+			location对象方法：
+			replace(url):跳转到那个页面，且不产生浏览记录
+			reload() : 重新加载当前页面，一般放在页面最后
+			不传参：有可能从浏览器缓存中加载
+			传参：reload(true)  每次都从服务器重新请求
+
+		*/
+		//5秒后跳转
+		setTimeout(function () {
+			//可以通过 location.href  属性的指向改变当前浏览器位置（也就是跳转到其他页面）
+			//location.href = "JSTestThree2.html";
+
+			//通过 replace() 方法进行跳转，左上角不会有返回键，不参数历史记录
+			//location.replace("http://www.baidu.com");
+
+			//重新加载当前页面
+			location.reload(true);
+		},5000)
+
+		
+
+	</script>
+
+</body>
+</html>
