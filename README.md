@@ -1,2 +1,2 @@
-# MOA-Test
-MOA测试版本
+# JS-TEST
+慕课JS练习
